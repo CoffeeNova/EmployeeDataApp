@@ -47,6 +47,9 @@ namespace EmployeeDataClient
         private static readonly List<Functions> FunctionsList = new List<Functions>
         {
             new Functions(GlobalComands.HELP, Help),
+            new Functions(GlobalComands.EXIT, Exit),
+            new Functions(GlobalComands.QUIT, Exit),
+            new Functions(GlobalComands._QUIT, Exit),
             new Functions(GlobalComands.LOG_IN, LogIn),
             new Functions(GlobalComands.SIGN_UP, SignUp),
             new Functions(GlobalComands.ALL, All),
@@ -86,6 +89,12 @@ namespace EmployeeDataClient
 
     public static class GlobalComands
     {
+        public const string QUIT = "quit";
+
+        public const string EXIT = "exit";
+
+        public const string _QUIT = "/quit";
+
         public const string HELP = "help";
 
         public const string LOG_IN = "login";

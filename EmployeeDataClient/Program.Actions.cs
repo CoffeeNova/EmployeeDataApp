@@ -15,7 +15,10 @@ namespace EmployeeDataClient
     {
 #if DEBUG
         private const string DomainName = @"http://localhost:1646/";
+#else
+        private const string DomainName = @"http://employeedata.tk/";
 #endif
+
         private static Token GetToken(string login, string password)
         {
             var content = new Content();

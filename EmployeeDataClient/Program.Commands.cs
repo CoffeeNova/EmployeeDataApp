@@ -17,6 +17,12 @@ namespace EmployeeDataClient
             Wline("Enter a command:");
         }
 
+        private static void Exit()
+        {
+            Console.WriteLine("Push any key to exit...");
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
         private static void Help()
         {
             Wline("Currently available comands:");
