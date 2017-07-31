@@ -1,0 +1,47 @@
+﻿{
+  "Id": 0,
+  "FirstName": "tre",
+  "LastName": "gre",
+  "Age": 30,
+  "Gender": "Male",
+  "Professions": [
+    {
+      "ProfessionName": "test",
+      "EmployeeModelId": 0
+    },
+    {
+      "ProfessionName": "rest",
+      "EmployeeModelId": 0
+    }
+  ]
+} {
+  "id": "1",
+  "professionNames": "["test","rest"]"
+} {
+  "id": "1",
+  "professionNames": [ "testr", "sda" ]
+} 
+
+[
+  {
+    "Id": 1,
+    "FirstName": "nameone",
+    "LastName": "one",
+    "Age": 30,
+    "Gender": "male",
+    "Professions": [
+      {
+        "ProfessionName": "profone",
+        "EmployeeModelId": 1
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "FirstName": "nameone",
+    "LastName": "three",
+    "Age": 20,
+    "Gender": "female",
+    "Professions": [ ]
+  }
+]
