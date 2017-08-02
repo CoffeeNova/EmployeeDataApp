@@ -4,18 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{055BB460-380E-4F76-9BAA-3B0A2A8646C9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{FB557022-51CC-4078-AFF9-3510124118E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EmployeeDataClient</RootNamespace>
-    <AssemblyName>EmployeeDataClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>EmployeeDataApp.DAL</RootNamespace>
+    <AssemblyName>EmployeeDataApp.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,13 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,31 +49,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\BreakException.cs" />
-    <Compile Include="Converters\ArrayToICollectionConverter.cs" />
-    <Compile Include="Exceptions\BadRequestException.cs" />
-    <Compile Include="Exceptions\InternalServerErrorException.cs" />
-    <Compile Include="Extensions\GeneralExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Program.Actions.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Program.Commands.cs" />
-    <Compile Include="Program.Helper.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Ef\DbInitializer.cs" />
+    <Compile Include="Ef\EmployeeDbContext.cs" />
+    <Compile Include="Ef\IEmployeeDbContext.cs" />
+    <Compile Include="Entities\EmployeeModel.cs" />
+    <Compile Include="Entities\ProfessionModel.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201707211415559_InitMigration.cs" />
+    <Compile Include="Migrations\201707211415559_InitMigration.Designer.cs">
+      <DependentUpon>201707211415559_InitMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\AddProfessionDto.cs" />
-    <Compile Include="Types\BadRequestDto.cs" />
-    <Compile Include="Types\EmployeeDto.cs" />
-    <Compile Include="Types\Error400.cs" />
-    <Compile Include="Types\ErrorDto.cs" />
-    <Compile Include="Types\ProfessionDto.cs" />
-    <Compile Include="Types\Token.cs" />
+    <Compile Include="Repositories\EmployeeModelRepository.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="testjson.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707211415559_InitMigration.resx">
+      <DependentUpon>201707211415559_InitMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
